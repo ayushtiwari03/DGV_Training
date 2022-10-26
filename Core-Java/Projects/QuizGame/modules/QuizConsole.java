@@ -6,187 +6,49 @@ import java.util.Scanner;
 
 public class QuizConsole {
 	
-ArrayList <Rank> rank = new ArrayList<Rank>();
-	
-	public void rankData() {
-		rank.add(new Rank("Ayush",90));
-		rank.add(new Rank("Shivam",75));
-		rank.add(new Rank("Sujaan",65));
-		rank.add(new Rank("Ankur",80));
-		rank.add(new Rank("Satyam",55));
+ArrayList <QuizQuestions> quizQuestion = new ArrayList<QuizQuestions>();
+ArrayList <Rank> rank	= new ArrayList<Rank>();
+
+    public void addPlayer() {
+    	rank.add(new Rank("Ayush",70));
+    	rank.add(new Rank("Shivam",75));
+    	rank.add(new Rank("Sujaan",65));
+    	rank.add(new Rank("Divya",60));
+    }
+	public void addQuestions() {
+		quizQuestion.add(new QuizQuestions("A. Who invented Java Programming?","1.  James Gosling","2. Bjarne Stroustrup",1));
+		quizQuestion.add(new QuizQuestions("B. What year was the very first model of the iPhone released?","1. 2009","2. 2007",1));
+		quizQuestion.add(new QuizQuestions("C. Which planet is the hottest in the solar system?","1. Mars","2. Venus",2));
+		quizQuestion.add(new QuizQuestions("D. What was Superman’s birth name?","1. Clark Klent","2. Kal-El",1));
+		quizQuestion.add(new QuizQuestions("E.What does DC stand for?","1. Daily Comics","2. Detective Comics",2));
+		quizQuestion.add(new QuizQuestions("F. Is Java Object Oriented Programming Language?","1.  No","2. Yes",2));
+		quizQuestion.add(new QuizQuestions("G. How many films did Sean Connery play James Bond in?","1. 7","2. 9",1));
+		quizQuestion.add(new QuizQuestions("H. Which is the capital of India ?","1. Mumbai","2. Delhi",2));
+		quizQuestion.add(new QuizQuestions("I. India's Independence Day is on 15th August?","1. False","2. True",2));
+		quizQuestion.add(new QuizQuestions("J. Who played Wolverine?","1. Hugh Jackman","2. Nicholas Cage",1));
+
 	}
 	
 	Scanner scanner = new Scanner(System.in);
 	
 	public void startQuiz(String name) {
 		int score =0;
-		int userChoice;
-		System.out.println();
-		System.out.println("Warning!! You will get +10 points for the right answer! and you will get -5 points also for the wrong answer!");
-		System.out.println("Lets get started!!");
-		System.out.println();
-		System.out.println("A. Who invented Java Programming?");
-		System.out.println("1.  James Gosling");
-		System.out.println("2. Bjarne Stroustrup");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 1:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
+		
+		for(int i=0;i<quizQuestion.size();i++) {
+			System.out.println(quizQuestion.get(i).getQuestion());
+			System.out.println(quizQuestion.get(i).getOption1());
+			System.out.println(quizQuestion.get(i).getOption2());
+			int answer = scanner.nextInt();
+			if(quizQuestion.get(i).getCorrectOption() == answer) {
+				score += 10;
+			}
+			else {
+				score -= 5;
+			}
+			rank.add(new Rank(name,score));
+			
 		}
-		}
-		System.out.println();
-		System.out.println("B. What year was the very first model of the iPhone released?");
-		System.out.println("1. 2009");
-		System.out.println("2. 2007");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 2:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("C. Which planet is the hottest in the solar system?");
-		System.out.println("2. Mars");
-		System.out.println("3. Venus");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 3:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("D. What was Superman’s birth name?");
-		System.out.println("1. Clark Klent");
-		System.out.println("2. Kal-El");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 2:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("E.What does DC stand for?");
-		System.out.println("2. Daily Comics");
-		System.out.println("3. Detective Comics");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 3:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("F. Is Java Object Oriented Programming Language?");
-		System.out.println("1. Yes");
-		System.out.println("2. No");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 1:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("G. How many films did Sean Connery play James Bond in?");
-		System.out.println("1. 7");
-		System.out.println("2. 9");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 1:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("H. Which is the capital of India ?");
-		System.out.println("1. Mumbai");
-		System.out.println("4. Delhi");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 4:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("I. India's Independence Day is on 15th August.");
-		System.out.println("1. True");
-		System.out.println("2. False");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 1:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("J. Who played Wolverine?");
-		System.out.println("1. Hugh Jackman");
-		System.out.println("2. Nicholas Cage");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 1:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("Your final score is "+score);
-		rank.add(new Rank(name,score));
+		System.out.println("Your score is "+score);
 	}
 	
 	public void viewRanking() {
