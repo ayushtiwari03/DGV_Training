@@ -11,7 +11,8 @@ public class QuizMain {
 		Scanner scanner = new Scanner(System.in);
 		int userChoice;
 		QuizConsole quizConsole = new QuizConsole();
-		quizConsole.rankData();
+		quizConsole.addPlayer();
+		quizConsole.addQuestions();
 		do {
 			System.out.println();
 			System.out.println("Select your choice");
